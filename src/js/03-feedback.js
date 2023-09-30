@@ -46,9 +46,13 @@ document.addEventListener('DOMContentLoaded', checkLocalStorage);
 
 const cleanStorage = event => {
   event.preventDefault();
-  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
-  localStorage.removeItem('feedback-form-state');
-  form.reset();
+  if (inputEmail.value && inputMessage.value) {
+    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+    localStorage.removeItem('feedback-form-state');
+    form.reset();
+  } else {
+    return alert('All fields must be filled in!');
+  }
 };
 
 form.addEventListener('submit', cleanStorage);

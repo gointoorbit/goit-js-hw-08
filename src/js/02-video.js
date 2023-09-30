@@ -10,12 +10,10 @@ function saveCurrentTime({ seconds }) {
 
 player.on('timeupdate', throttle(saveCurrentTime, 1000));
 
-let currentTime = localStorage.getItem('videoplayer-current-time');
 function setCurrentTime() {
+  let currentTime = localStorage.getItem('videoplayer-current-time');
   if (currentTime) {
     player.setCurrentTime(currentTime);
-  } else {
-    return;
   }
 }
 document.addEventListener('DOMContentLoaded', setCurrentTime());
